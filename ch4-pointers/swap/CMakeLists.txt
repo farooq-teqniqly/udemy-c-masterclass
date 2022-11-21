@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.23)
-project(swap C)
-
 set(CMAKE_C_STANDARD 11)
+set(CMAKE_PROJECT_NAME  "swap")
+set(CMAKE_C_FLAGS "-O3")
 
-add_executable(swap
+include_directories(.)
+
+project(${CMAKE_PROJECT_NAME} C)
+
+add_executable(${CMAKE_PROJECT_NAME}
         main.c)
