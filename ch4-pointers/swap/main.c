@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define EXIT_ERROR (-1)
+#define EXIT_SUCCESS 0
+
 int parseArg(char *arg, int *dest);
 
 void swap(int *n1, int *n2);
@@ -9,7 +12,7 @@ void swap(int *n1, int *n2);
 int main(int argc, char **argv) {
     if (argc != 3) {
         fprintf(stderr, "USAGE: %s [number 1] [number 2]", argv[0]);
-        exit(-1);
+        exit(EXIT_ERROR);
     }
 
     int n1, n2;
@@ -17,12 +20,12 @@ int main(int argc, char **argv) {
 
     if (parseArg(argv[1], &n1) != 0) {
         fprintf(stderr, "Arguments must be numbers.");
-        exit(-1);
+        exit(EXIT_ERROR);
     }
 
     if (parseArg(argv[2], &n2) != 0) {
         fprintf(stderr, "Arguments must be numbers.");
-        exit(-1);
+        exit(EXIT_ERROR);
     }
 
     printf("Numbers before swap: (%d, %d)\n", n1, n2);
@@ -31,7 +34,7 @@ int main(int argc, char **argv) {
 
     printf("Numbers after swap: (%d, %d)\n", n1, n2);
 
-    exit(0);
+    exit(EXIT_SUCCESS);
 }
 
 int parseArg(char *arg, int *dest) {
